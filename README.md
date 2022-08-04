@@ -30,7 +30,6 @@ To date, EOSIO SDK for Swift has only been tested on iOS. The goal, however, is 
     - [Softkey Signature Provider Usage](#softkey-signature-provider-usage)
     - [Key Management and Signing Utilities](#key-management-and-signing-utilities)
 - [Other Code Examples](#other-code-examples)
-- [iOS Example App](#ios-example-app)
 - [Code Documentation](#code-documentation)
 - [Provider Protocol Architecture](#provider-protocol-architecture)
 - [RPC: Using the Default RPC Provider](#rpc-using-the-default-rpc-provider)

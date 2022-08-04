@@ -251,7 +251,7 @@ ECC provides the following methods, among others. This list will expand as more 
 
 **Important:** Softkey Signature Provider stores keys in memory and is therefore not secure. It should only be used for development purposes. In production, we strongly recommend using a signature provider that interfaces with a secure vault, authenticator or wallet.
 
-Generally, signature providers are called by [`EosioTransaction`](Sources/EosioSwift/EosioTransaction/EosioTransaction.swift) during signing. ([See an example here.](README.md#basic-usage)) If you find, however, that you need to get available keys or request signing directly, this library can be invoked as follows:
+Generally, signature providers are called by [`EosioTransaction`](Sources/EosioSwift/EosioTransaction/EosioTransaction.swift) during signing. ([See an example here.](#basic-usage)) If you find, however, that you need to get available keys or request signing directly, this library can be invoked as follows:
 
 ```swift
 let signProvider = try? EosioSoftkeySignatureProvider(privateKeys: privateKeysArray)

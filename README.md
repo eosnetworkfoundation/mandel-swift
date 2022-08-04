@@ -1,14 +1,13 @@
-![Swift Logo](https://raw.githubusercontent.com/EOSIO/eosio-swift/master/img/swift-logo.png)
+![Swift Logo](https://raw.githubusercontent.com/eosnetworkfoundation/mandel-swift/master/img/swift-logo.png)
 # EOSIO SDK for Swift
 
-[![Software License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/EOSIO/eosio-swift/blob/master/LICENSE)
 [![Swift 5.2](https://img.shields.io/badge/Language-Swift_5.2-orange.svg)](https://swift.org)
 ![](https://img.shields.io/badge/Deployment%20Target-iOS%2012-blue.svg)
 
 EOSIO SDK for Swift is a set of components for integrating with EOSIO-based blockchains. It contains:
 
-* EosioSwift, the core component for communicating and transacting with EOSIO-based blockchains using the [EOSIO RPC API](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index).
-* ABIEOS Serialization Provider, a pluggable serialization provider for EosioSwift. Serialization providers are responsible for ABI-driven transaction and action serialization and deserialization between JSON and binary data representations. This particular serialization provider wraps [ABIEOS](https://github.com/EOSIO/abieos), a C/C++ library that facilitates this conversion.
+* EosioSwift, the core component for communicating and transacting with EOSIO-based blockchains using the [EOS RPC API](http://docs.eosnetwork.com/reference/mandel-plugins/chain_api.html).
+* ABIEOS Serialization Provider, a pluggable serialization provider for EosioSwift. Serialization providers are responsible for ABI-driven transaction and action serialization and deserialization between JSON and binary data representations. This particular serialization provider wraps [ABIEOS](https://github.com/eosnetworkfoundation/mandel-abieos), a C/C++ library that facilitates this conversion.
 * ECC, a component for working with public and private keys, cryptographic signatures, encryption/decryption, etc.
 * Softkey Signature Provider, an example pluggable signature provider for EosioSwift. It allows for signing transactions using in-memory K1 keys.
 
@@ -51,7 +50,7 @@ To date, EOSIO SDK for Swift has only been tested on iOS. The goal, however, is 
 
 Depending on the component(s) you wish to use, the appropriate dependencies will also be installed for you. For example, if you wished to use `EosioSwiftAbieosSerializationProvider`, then the main `EosioSwift` component would also be installed.
 
-If you wish to use all of the components, add the `EosioSwift`, `EosioSwiftAbieosSerializationProvider`, `EosioSwiftEcc` and `EosioSwiftSoftkeySignatureProvider` products from `https://github.com/EOSIO/eosio-swift` to your application dependencies.
+If you wish to use all of the components, add the `EosioSwift`, `EosioSwiftAbieosSerializationProvider`, `EosioSwiftEcc` and `EosioSwiftSoftkeySignatureProvider` products from `https://github.com/eosnetworkfoundation/mandel-swift` to your application dependencies.
 
 Or to include it into a library, add the following to your `Package.swift` definition:
 
@@ -75,7 +74,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(name: "EosioSwift", url: "https://github.com/EOSIO/eosio-swift", from: "1.0.0"))
+        .package(name: "EosioSwift", url: "https://github.com/eosnetworks/mandel-swift", from: "1.0.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -251,9 +250,9 @@ ECC provides the following methods, among others. This list will expand as more 
 
 ### Softkey Signature Provider Usage
 
-**Important:** Softkey Signature Provider stores keys in memory and is therefore not secure. It should only be used for development purposes. In production, we strongly recommend using a signature provider that interfaces with a secure vault, authenticator or wallet, such as the Vault Signature Provider from [EOSIO SDK for Swift: Vault](https://github.com/EOSIO/eosio-swift-vault).
+**Important:** Softkey Signature Provider stores keys in memory and is therefore not secure. It should only be used for development purposes. In production, we strongly recommend using a signature provider that interfaces with a secure vault, authenticator or wallet.
 
-Generally, signature providers are called by [`EosioTransaction`](Sources/EosioSwift/EosioTransaction/EosioTransaction.swift) during signing. ([See an example here.](https://github.com/EOSIO/eosio-swift#basic-usage)) If you find, however, that you need to get available keys or request signing directly, this library can be invoked as follows:
+Generally, signature providers are called by [`EosioTransaction`](Sources/EosioSwift/EosioTransaction/EosioTransaction.swift) during signing. ([See an example here.](README.md#basic-usage)) If you find, however, that you need to get available keys or request signing directly, this library can be invoked as follows:
 
 ```swift
 let signProvider = try? EosioSoftkeySignatureProvider(privateKeys: privateKeysArray)
@@ -275,19 +274,15 @@ signProvider.signTransaction(request: signRequest) { (response) in
 
 ### Key Management and Signing Utilities
 
-Utilities for key generation and management and other signing functionality can be found in the [EOSIO SDK for Swift: Vault](https://github.com/EOSIO/eosio-swift-vault) library.
+Utilities for key generation and management and other signing functionality can be found in the [EOS SDK for Swift: Vault](https://github.com/eosnetworkfoundation/mandel-swift-vault) library.
 
 ## Other Code Examples
 
 More examples can be found in the [EXAMPLES.md](EXAMPLES.md) document.
 
-## iOS Example App
-
-If you'd like to see EOSIO SDK for Swift in action, check out our open source [iOS Example App](https://github.com/EOSIO/eosio-swift-ios-example-app)--a working application that fetches an account's token balance and pushes a transfer action.
-
 ## Code Documentation
 
-Please refer to the generated code documentation at https://eosio.github.io/eosio-swift/ or by cloning this repo and opening any of the following files in your browser:
+Please refer to the generated code documentation at https://github.com/eosnetworkfoundation/mandel-swift/ or by cloning this repo and opening any of the following files in your browser:
 
 * `docs/EosioSwift/index.html`
 * `docs/EosioSwiftAbieosSerializationProvider/index.html`
@@ -298,30 +293,30 @@ Documentation can be regenerated or updated by running the `update_documentation
 
 ## Provider Protocol Architecture
 
-The core EOSIO SDK for Swift library uses a provider-protocol-driven architecture to provide maximum flexibility in a variety of environments and use cases. `EosioTransaction` leverages those providers to prepare and process transactions. EOSIO SDK for Swift exposes four protocols. You, the developer, get to choose which conforming implementations to use.
+The core EOS SDK for Swift library uses a provider-protocol-driven architecture to provide maximum flexibility in a variety of environments and use cases. `EosioTransaction` leverages those providers to prepare and process transactions. EOS SDK for Swift exposes four protocols. You, the developer, get to choose which conforming implementations to use.
 
 ### Signature Provider Protocol
 
-The Signature Provider abstraction is arguably the most useful of all of the [EOSIO SDK for Swift](https://github.com/EOSIO/eosio-swift) providers. It is responsible for:
+The Signature Provider abstraction is arguably the most useful of all of the [EOS SDK for Swift](https://github.com/eosnetworkfoundation/mandel-swift/) providers. It is responsible for:
 
 * finding out what keys are available for signing (`getAvailableKeys`), and
 * requesting and obtaining transaction signatures with a subset of the available keys (`signTransaction`).
 
-By simply switching out the signature provider on a transaction, signature requests can be routed any number of ways. Need software signing? [Configure the `EosioTransaction`](#basic-usage) with the [Softkey Signature Provider](#softkey-signature-provider-usage) signature provider. Need a signature from keys in the platform's Keychain or Secure Enclave? Take a look at the [Vault Signature Provider](https://github.com/EOSIO/eosio-swift-vault). Need signatures from a wallet on the user's device? A signature provider can do that too!
+By simply switching out the signature provider on a transaction, signature requests can be routed any number of ways. Need software signing? [Configure the `EosioTransaction`](#basic-usage) with the [Softkey Signature Provider](#softkey-signature-provider-usage) signature provider. Need a signature from keys in the platform's Keychain or Secure Enclave? Take a look at the [Vault Signature Provider](https://github.com/eosnetworkfoundation/mandel-swift). Need signatures from a wallet on the user's device? A signature provider can do that too!
 
 All signature providers must conform to the [`EosioSignatureProviderProtocol`](Sources/EosioSwift/EosioSignatureProviderProtocol/EosioSignatureProviderProtocol.swift) Protocol.
 
 EOSIO SDK for Swift does include a signature provider implementation; `EosioSoftkeySignatureProvider`, an example signature provider for signing transactions using K1 keys in memory. _This signature provider stores keys in memory and is therefore not secure. It should only be used for development purposes. In production, we strongly recommend using a signature provider that interfaces with a secure vault, authenticator or wallet._
 
-While it is possible to use `EosioSoftkeySignatureProvider`, [Vault Signature Provider](https://github.com/EOSIO/eosio-swift-vault), a signature provider implementation for signing transactions using keys stored in Keychain or the device's Secure Enclave, is strongly recommended.
+While it is possible to use `EosioSoftkeySignatureProvider`, [Vault Signature Provider](https://github.com/eosnetworkfoundation/mandel-swift-vault), a signature provider implementation for signing transactions using keys stored in Keychain or the device's Secure Enclave, is strongly recommended.
 
 ### RPC Provider Protocol
 
-The RPC Provider is responsible for all [RPC calls to nodeos](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index), as well as general network handling (Reachability, retry logic, etc.) While EOSIO SDK for Swift includes an [RPC Provider implementation](#rpc-using-the-default-rpc-provider), it must still be set explicitly when creating an `EosioTransaction`, as it must be instantiated with an endpoint. (The default implementation suffices for most use cases.)
+The RPC Provider is responsible for all [RPC calls to nodeos](http://docs.eosnetwork.com/reference/mandel-plugins/chain_api.html), as well as general network handling (Reachability, retry logic, etc.) While EOSIO SDK for Swift includes an [RPC Provider implementation](#rpc-using-the-default-rpc-provider), it must still be set explicitly when creating an `EosioTransaction`, as it must be instantiated with an endpoint. (The default implementation suffices for most use cases.)
 
 * [`EosioRpcProviderProtocol`](Sources/EosioSwift/EosioRpcProviderProtocol/EosioRpcProviderProtocol.swift) - All RPC providers must conform to this protocol.
 * [`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift) Default Implementation - Default RPC provider implementation included in EOSIO SDK for Swift.
-* [Nodeos RPC Reference Documentation](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index) - Nodeos RPC reference.
+* [Nodeos RPC Reference Documentation](http://docs.eosnetwork.com/reference/mandel-plugins/chain_api.html) - Nodeos RPC reference.
 
 ### Serialization Provider Protocol
 
@@ -339,7 +334,7 @@ The ABI Provider is responsible for fetching and caching ABIs for use during ser
 
 ## RPC: Using the Default RPC Provider
 
-EOSIO Swift includes a default RPC Provider implementation ([`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift)) for communicating with EOSIO nodes using the [EOSIO RPC API](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index). Alternate RPC providers can be used assuming they conform to the minimal [`EosioRpcProviderProtocol`](Sources/EosioSwift/EosioRpcProviderProtocol/EosioRpcProviderProtocol.swift). The core EOSIO SDK for Swift library depends only on five of the six RPC endpoints set forth in that Protocol. `pushTransaction` is no longer used by the core library but has been retained for backwards compatibility. Other endpoints, however, are exposed in the default [`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift).
+EOSIO Swift includes a default RPC Provider implementation ([`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift)) for communicating with EOSIO nodes using the [EOSIO RPC API](http://docs.eosnetwork.com/reference/mandel-plugins/chain_api.html). Alternate RPC providers can be used assuming they conform to the minimal [`EosioRpcProviderProtocol`](Sources/EosioSwift/EosioRpcProviderProtocol/EosioRpcProviderProtocol.swift). The core EOSIO SDK for Swift library depends only on five of the six RPC endpoints set forth in that Protocol. `pushTransaction` is no longer used by the core library but has been retained for backwards compatibility. Other endpoints, however, are exposed in the default [`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift).
 
 Calls can be made to any of the available endpoints as follows:
 
@@ -364,16 +359,16 @@ Response structs are currently incomplete. Some responses will _only_ return the
 
 ## Want to help?
 
-Interested in contributing? That's awesome! Here are some [Contribution Guidelines](https://github.com/EOSIO/eosio-swift/blob/master/CONTRIBUTING.md) and the [Code of Conduct](https://github.com/EOSIO/eosio-swift/blob/master/CONTRIBUTING.md#conduct).
+Interested in contributing? That's awesome! Here are some [Contribution Guidelines](https://github.com/eosnetworkfoundation/mandel-swift/blob/master/CONTRIBUTING.md) and the [Code of Conduct](https://github.com/eosnetworkfoundation/mandel-swift/blob/master/CONTRIBUTING.md#conduct).
 
-We're always looking for ways to improve EOSIO SDK for Swift. Check out our [#enhancement Issues](https://github.com/EOSIO/eosio-swift/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement) for ways you can pitch in.
+We're always looking for ways to improve EOSIO SDK for Swift. Check out our [#enhancement Issues](https://github.com/eosnetworkfoundation/mandel-swift/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement) for ways you can pitch in.
 
 ## License
 
-[MIT](https://github.com/EOSIO/eosio-swift/blob/master/LICENSE)
+[MIT](https://github.com/eosnetworkfoundation/mandel-swift/blob/master/LICENSE)
 
 ## Important
 
-See LICENSE for copyright and license terms.  Block.one makes its contribution on a voluntary basis as a member of the EOSIO community and is not responsible for ensuring the overall performance of the software or any related applications.  We make no representation, warranty, guarantee or undertaking in respect of the software or any related documentation, whether expressed or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall we be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or documentation or the use or other dealings in the software or documentation. Any test results or performance figures are indicative and will not reflect performance under all conditions.  Any reference to any third party or third-party product, service or other resource is not an endorsement or recommendation by Block.one.  We are not responsible, and disclaim any and all responsibility and liability, for your use of or reliance on any of these resources. Third-party resources may be updated, changed or terminated at any time, so the information here may be out of date or inaccurate.  Any person using or offering this software in connection with providing software, goods or services to third parties shall advise such third parties of these license terms, disclaimers and exclusions of liability.  Block.one, EOSIO, EOSIO Labs, EOS, the heptahedron and associated logos are trademarks of Block.one.
+See LICENSE for copyright and license terms.  We make our contribution on a voluntary basis as a member of the EOS community and is not responsible for ensuring the overall performance of the software or any related applications.  We make no representation, warranty, guarantee or undertaking in respect of the software or any related documentation, whether expressed or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall we be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or documentation or the use or other dealings in the software or documentation. Any test results or performance figures are indicative and will not reflect performance under all conditions.  Any reference to any third party or third-party product, service or other resource is not an endorsement or recommendation by Block.one.  We are not responsible, and disclaim any and all responsibility and liability, for your use of or reliance on any of these resources. Third-party resources may be updated, changed or terminated at any time, so the information here may be out of date or inaccurate.  Any person using or offering this software in connection with providing software, goods or services to third parties shall advise such third parties of these license terms, disclaimers and exclusions of liability.  Block.one, EOS, EOSIO Labs, EOS Network Foundation.
 
 Wallets and related components are complex software that require the highest levels of security.  If incorrectly built or used, they may compromise users’ private keys and digital assets. Wallet applications and related components should undergo thorough security evaluations before being used.  Only experienced developers should work with this software.

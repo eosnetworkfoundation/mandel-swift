@@ -77,7 +77,7 @@ do {
                        memo: "This is only a test")
     )
     transaction.add(action: action)
-    
+
 
     transaction.sign { result in
         switch result {
@@ -87,12 +87,12 @@ do {
                 print("Error, could not find signatures or serialized transaction.")
                 return
             }
-            
+
             let requestParameters = EosioRpcSendTransactionRequest(signatures: signatures,
                                                                    compression: 0,
                                                                    packedContextFreeData: "",
                                                                    packedTrx: serializedTransaction)
-            
+
             self.rpcProvider.sendTransactionBase(requestParameters: requestParameters) { response in
                 switch response {
                 case .success(let sentResponse):
@@ -116,7 +116,7 @@ do {
             print("Transaction failed, error: \(error)")
         }
     }
-    
+
 } catch (let error) {
     print("Handle this error: \(error.localizedDescription)")
 }
@@ -126,7 +126,7 @@ do {
 
 ### Get Account Information
 
-This snippet retrieves information for an account on the blockchain. There are several layers of response to unpack if all information is desired. Some portions of the response are not fully unmarshalled, either due to size or because the responses can vary in structure. These are returned as general `[String: Any]` Swift objects. The [NODEOS Reference](https://developers.eos.io/manuals/eos/latest/nodeos/plugins/chain_api_plugin/api-reference/index) is helpful for decoding the parts of responses that are not fully unmarshalled.
+This snippet retrieves information for an account on the blockchain. There are several layers of response to unpack if all information is desired. Some portions of the response are not fully unmarshalled, either due to size or because the responses can vary in structure. These are returned as general `[String: Any]` Swift objects. The [NODEOS Reference](http://docs.eosnetwork.com/reference/mandel-plugins/chain_api.html) is helpful for decoding the parts of responses that are not fully unmarshalled.
 
 ```swift
 let url = URL(string: "https://my.example.blockchain")!
@@ -142,7 +142,7 @@ rpcProvider.getAccount(requestParameters: requestParameters) { response in
         }
         let accountname = response.accountName
         let ramQuota = response.ramQuota.value
-    
+
         guard let permissions = response.permissions else {
             // Handle Condition
             return
@@ -184,7 +184,7 @@ rpcProvider.getAccount(requestParameters: requestParameters) { response in
 
 ### Retrieving Values from KV Tables
 
-This snippet retrieves values from a KV table defined by a contract on the server. The example below is requesting the values from the contract "todo" in the table named "todo". It is querying the index named "uuid" for the value "bf581bee-9f2c-447b-94ad-78e4984b6f51". The encoding type of the indexValue being supplied is ".string". Other supported encoding types can be found in the full documentation in this repo at `docs/EosioSwift/index.html`.
+This snippet retrieves values from a KV table defined by a contract on the server. The example below is requesting the values from the contract "todo" in the table named "todo". It is querying the index named "uuid" for the value "bf581bee-9f2c-447b-94ad-78e4984b6f51". The encoding type of the indexValue being supplied is ".string". Other supported encoding types can be found in the full documentation in this repo at [README](README.md).
 
 ```swift
 let url = URL(string: "https://my.example.blockchain")!

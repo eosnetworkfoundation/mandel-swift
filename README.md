@@ -6,7 +6,7 @@
 
 EOSIO SDK for Swift is a set of components for integrating with EOSIO-based blockchains. It contains:
 
-* EosioSwift, the core component for communicating and transacting with EOSIO-based blockchains using the [EOS RPC API](/latest/leap-plugins/chain_api.html).
+* EosioSwift, the core component for communicating and transacting with EOSIO-based blockchains using the [EOS RPC API](/leap-plugins/latest/chain_api.html).
 * ABIEOS Serialization Provider, a pluggable serialization provider for EosioSwift. Serialization providers are responsible for ABI-driven transaction and action serialization and deserialization between JSON and binary data representations. This particular serialization provider wraps [ABIEOS](https://github.com/eosnetworkfoundation/mandel-abieos), a C/C++ library that facilitates this conversion.
 * ECC, a component for working with public and private keys, cryptographic signatures, encryption/decryption, etc.
 * Softkey Signature Provider, an example pluggable signature provider for EosioSwift. It allows for signing transactions using in-memory K1 keys.
@@ -311,11 +311,11 @@ While it is possible to use `EosioSoftkeySignatureProvider`, [Vault Signature Pr
 
 ### RPC Provider Protocol
 
-The RPC Provider is responsible for all [RPC calls to nodeos](/latest/leap-plugins/chain_api.html), as well as general network handling (Reachability, retry logic, etc.) While EOSIO SDK for Swift includes an [RPC Provider implementation](#rpc-using-the-default-rpc-provider), it must still be set explicitly when creating an `EosioTransaction`, as it must be instantiated with an endpoint. (The default implementation suffices for most use cases.)
+The RPC Provider is responsible for all [RPC calls to nodeos](/leap-plugins/latest/chain_api.html), as well as general network handling (Reachability, retry logic, etc.) While EOSIO SDK for Swift includes an [RPC Provider implementation](#rpc-using-the-default-rpc-provider), it must still be set explicitly when creating an `EosioTransaction`, as it must be instantiated with an endpoint. (The default implementation suffices for most use cases.)
 
 * [`EosioRpcProviderProtocol`](Sources/EosioSwift/EosioRpcProviderProtocol/EosioRpcProviderProtocol.swift) - All RPC providers must conform to this protocol.
 * [`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift) Default Implementation - Default RPC provider implementation included in EOSIO SDK for Swift.
-* [Nodeos RPC Reference Documentation](/latest/leap-plugins/chain_api.html) - Nodeos RPC reference.
+* [Nodeos RPC Reference Documentation](/leap-plugins/latest/chain_api.html) - Nodeos RPC reference.
 
 ### Serialization Provider Protocol
 
@@ -333,7 +333,7 @@ The ABI Provider is responsible for fetching and caching ABIs for use during ser
 
 ## RPC: Using the Default RPC Provider
 
-EOSIO Swift includes a default RPC Provider implementation ([`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift)) for communicating with EOSIO nodes using the [EOSIO RPC API](/latest/leap-plugins/chain_api.html). Alternate RPC providers can be used assuming they conform to the minimal [`EosioRpcProviderProtocol`](Sources/EosioSwift/EosioRpcProviderProtocol/EosioRpcProviderProtocol.swift). The core EOSIO SDK for Swift library depends only on five of the six RPC endpoints set forth in that Protocol. `pushTransaction` is no longer used by the core library but has been retained for backwards compatibility. Other endpoints, however, are exposed in the default [`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift).
+EOSIO Swift includes a default RPC Provider implementation ([`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift)) for communicating with EOSIO nodes using the [EOSIO RPC API](/leap-plugins/latest/chain_api.html). Alternate RPC providers can be used assuming they conform to the minimal [`EosioRpcProviderProtocol`](Sources/EosioSwift/EosioRpcProviderProtocol/EosioRpcProviderProtocol.swift). The core EOSIO SDK for Swift library depends only on five of the six RPC endpoints set forth in that Protocol. `pushTransaction` is no longer used by the core library but has been retained for backwards compatibility. Other endpoints, however, are exposed in the default [`EosioRpcProvider`](Sources/EosioSwift/EosioRpcProvider/EosioRpcProvider.swift).
 
 Calls can be made to any of the available endpoints as follows:
 

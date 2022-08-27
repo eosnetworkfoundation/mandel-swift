@@ -126,7 +126,7 @@ do {
 
 ### Get Account Information
 
-This snippet retrieves information for an account on the blockchain. There are several layers of response to unpack if all information is desired. Some portions of the response are not fully unmarshalled, either due to size or because the responses can vary in structure. These are returned as general `[String: Any]` Swift objects. The [NODEOS Reference](/latest/leap-plugins/chain_api.html) is helpful for decoding the parts of responses that are not fully unmarshalled.
+This snippet retrieves information for an account on the blockchain. There are several layers of response to unpack if all information is desired. Some portions of the response are not fully unmarshalled, either due to size or because the responses can vary in structure. These are returned as general `[String: Any]` Swift objects. The [NODEOS Reference](/leap-plugins/latest/chain_api.html) is helpful for decoding the parts of responses that are not fully unmarshalled.
 
 ```swift
 let url = URL(string: "https://my.example.blockchain")!

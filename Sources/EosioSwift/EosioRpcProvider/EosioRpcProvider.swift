@@ -13,7 +13,7 @@ import PMKFoundation
 #endif
 
 /// Default RPC Provider implementation. Conforms to `EosioRpcProviderProtocol`.
-/// RPC Reference: https://developers.eos.io/eosio-nodeos/reference
+/// RPC Reference: https://docs.eosnetwork.com/docs/latest/api-listing/#nodeos-api-reference
 public class EosioRpcProvider {
 
     private let getInfoRpc = "chain/get_info"

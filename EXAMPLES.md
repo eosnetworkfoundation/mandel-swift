@@ -1,6 +1,6 @@
-# EOSIO SDK for Swift Examples
+# EOS SDK for Swift Examples
 
-EOSIO SDK for Swift contains an extensive set of functionality beyond the basics required for transactions. The code snippets below show how to use some of this extended functionality. It is important to note that these are simply example snippets and may not work the way you expect if you just copy and paste them into a method.
+EOS SDK for Swift contains an extensive set of functionality beyond the basics required for transactions. The code snippets below show how to use some of this extended functionality. It is important to note that these are simply example snippets and may not work the way you expect if you just copy and paste them into a method.
 
 One common mistake is to allow the transaction or one of the providers to go out of scope, resulting in an error in the return closure when the server replies to the transaction request. If you are seeing "self does not exist" errors when trying to send transactions or RPC calls, check to make sure that your objects are being held properly.
 
@@ -12,9 +12,9 @@ Note: For clarity, these examples use the Softkey Signature Provider, which is N
 
 Basic submission of a transaction is shown in the main [README.md](README.md) file at the top level of the repository. Please see the [Basic Usage](README.md/#basic-usage) example for details.
 
-### How to Transfer an EOSIO Token
+### How to Transfer an EOS Token
 
-The [Basic Usage](README.md/#basic-usage) example in the top level [README.md](README.md) file is an example of transferring an EOSIO token. Please see that example for details.
+The [Basic Usage](README.md/#basic-usage) example in the top level [README.md](README.md) file is an example of transferring an EOS token. Please see that example for details.
 
 ## Extended Transaction Examples
 

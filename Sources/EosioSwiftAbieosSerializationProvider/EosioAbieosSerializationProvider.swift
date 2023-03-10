@@ -12,7 +12,7 @@ import EosioSwift
 import Abieos
 #endif
 
-/// Serialization provider implementation for EOSIO SDK for Swift using ABIEOS.
+/// Serialization provider implementation for EOS SDK for Swift using ABIEOS.
 /// Responsible for ABI-driven transaction and action serialization and deserialization
 /// between JSON and binary data representations.
 public class EosioAbieosSerializationProvider: EosioSerializationProviderProtocol {

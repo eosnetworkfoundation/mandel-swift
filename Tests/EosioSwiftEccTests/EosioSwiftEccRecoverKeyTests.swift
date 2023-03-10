@@ -99,7 +99,7 @@ class EosioSwiftEccRecoverKeyTests: XCTestCase {
             let privateKey = "5KLuCa3aEXW2kLyj2xbHjn9fsoZmmBNBTbVHhnkzVXtgjipDyQF"
             let publicKey =  try EccRecoverKey.recoverPublicKey(privateKey: Data(eosioPrivateKey: privateKey), curve: .k1)
             guard let eosLegacyPublicKey = publicKey.toCompressedPublicKey?.toEosioLegacyPublicKey else {
-                XCTFail("Should not fail to convert to EOSIO Legacy Public key.")
+                XCTFail("Should not fail to convert to EOS Legacy Public key.")
                 return
             }
             XCTAssert(eosLegacyPublicKey == "EOS7mbBaD7UFLQKVE3oGkAp4ToFaFjaedjJA2WBpTBY8yXgnwK53e")

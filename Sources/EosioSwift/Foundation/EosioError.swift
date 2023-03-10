@@ -81,7 +81,7 @@ public enum EosioErrorCode: String, Codable {
     case unexpectedError = "UnexpectedError"
 }
 
-/// An error for EOSIO SDK for Swift libraries containing an error code, reason, and the original error.
+/// An error for EOS SDK for Swift libraries containing an error code, reason, and the original error.
 open class EosioError: Error, CustomStringConvertible, Codable {
 
     /// An `EosioErrorCode`.

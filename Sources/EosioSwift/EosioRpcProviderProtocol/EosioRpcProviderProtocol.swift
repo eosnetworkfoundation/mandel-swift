@@ -8,10 +8,10 @@
 
 import Foundation
 
-// Protocol defining the endpoints required by the core EOSIO SDK for Swift library.
+// Protocol defining the endpoints required by the core EOS SDK for Swift library.
 
 // This protocol is intended to define/enforce the minimum functionality and response
-// information that is required by the internals of the EOSIO SDK for Swift library,
+// information that is required by the internals of the EOS SDK for Swift library,
 // not for a generic interface to multiple RPC provider impelementations by outside
 // code. Therefore, they append 'Base' to the function names to separate them from the full
 // response signature implementations that are provided by concrete RPC provider

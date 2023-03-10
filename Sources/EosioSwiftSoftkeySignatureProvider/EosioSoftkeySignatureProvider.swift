@@ -12,7 +12,7 @@ import EosioSwift
 import EosioSwiftEcc
 #endif
 
-/// Example signature provider for EOSIO SDK for Swift for signing transactions using in-memory K1 private keys. This
+/// Example signature provider for EOS SDK for Swift for signing transactions using in-memory K1 private keys. This
 /// signature provider implementation stores keys in memory and is therefore not secure. Use only for development purposes.
 public final class EosioSoftkeySignatureProvider: EosioSignatureProviderProtocol {
     private struct Key {

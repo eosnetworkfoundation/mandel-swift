@@ -10,7 +10,7 @@
 import Foundation
 import PromiseKit
 
-/// Class for creating, preparing, signing, and (optionally) broadcasting transactions on EOSIO-based blockchains.
+/// Class for creating, preparing, signing, and (optionally) broadcasting transactions on EOS-based blockchains.
 public class EosioTransaction: Codable {
 
     /// Chain ID in `String` format.

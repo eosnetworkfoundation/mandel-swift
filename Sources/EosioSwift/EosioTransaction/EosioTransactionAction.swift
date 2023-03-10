@@ -74,7 +74,7 @@ public extension EosioTransaction {
         ///   - name: Contract action name.
         ///   - authorization: Authorization (actor and permission).
         ///   - data: Action data (codable struct).
-        /// - Throws: If the strings are not valid EOSIO names or data cannot be encoded.
+        /// - Throws: If the strings are not valid EOS names or data cannot be encoded.
         public convenience init(account: String, name: String, authorization: [Authorization], data: Encodable) throws {
             try self.init(account: EosioName(account), name: EosioName(name), authorization: authorization, data: data)
         }
@@ -99,7 +99,7 @@ public extension EosioTransaction {
         ///   - name: Contract action name.
         ///   - authorization: Authorization (actor and permission).
         ///   - data: Dictionary.
-        /// - Throws: If the strings are not valid EOSIO names or data cannot be encoded.
+        /// - Throws: If the strings are not valid EOS names or data cannot be encoded.
         public convenience init(account: String, name: String, authorization: [Authorization], data: [String: Any]) throws {
             try self.init(account: EosioName(account), name: EosioName(name), authorization: authorization, data: data)
         }
@@ -126,7 +126,7 @@ public extension EosioTransaction {
         ///   - name: Contract action name.
         ///   - authorization: Authorization (actor and permission).
         ///   - dataSerialized: Data in serialized form.
-        /// - Throws: If the strings are not valid EOSIO names.
+        /// - Throws: If the strings are not valid EOS names.
         public convenience init(account: String, name: String, authorization: [Authorization], dataSerialized: Data) throws {
             try self.init(account: EosioName(account), name: EosioName(name), authorization: authorization, dataSerialized: dataSerialized)
         }

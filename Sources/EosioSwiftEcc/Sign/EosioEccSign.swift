@@ -96,7 +96,7 @@ public class EosioEccSign {
                     let sig = Data(bytes: outbuf, count: Int(outbufLen))
 
                     // Check for canonical
-                    // ref https://github.com/EOSIO/fc/blob/9a0ed1f85e38adc6ace8c944b5f5f725f4829ba2/src/crypto/elliptic_common.cpp#L161
+                    // ref https://github.com/EOS/fc/blob/9a0ed1f85e38adc6ace8c944b5f5f725f4829ba2/src/crypto/elliptic_common.cpp#L161
                     let headerByte: UInt8 = 27 + 4 + UInt8(recid)
                     let c: Data = [headerByte] + sig
                     let isCanonical =

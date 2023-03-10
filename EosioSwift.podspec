@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'EosioSwift'
   s.version          = '1.0.0'
-  s.summary          = 'EOSIO SDK for Swift - API for integrating with EOSIO-based blockchains.'
+  s.summary          = 'EOS SDK for Swift - API for integrating with EOS-based blockchains.'
   s.homepage         = 'https://github.com/eosnetworkfoundation/mandel-swift'
   s.license          = { :type => 'MIT', :text => <<-LICENSE
                            Copyright (c) 2021-2022 EOS Network Foundation (ENF) and its contributors.  All rights reserved.

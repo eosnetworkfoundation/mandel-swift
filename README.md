@@ -6,7 +6,7 @@
 
 EOS SDK for Swift is a set of components for integrating with EOS-based blockchains. It contains:
 
-* EosioSwift, the core component for communicating and transacting with EOS-based blockchains using the [EOS RPC API](/leap-plugins/latest/chain_api.html).
+* EosioSwift, the core component for communicating and transacting with EOS-based blockchains using the [EOS RPC API](/docs/latest/api-listing).
 * ABIEOS Serialization Provider, a pluggable serialization provider for EosioSwift. Serialization providers are responsible for ABI-driven transaction and action serialization and deserialization between JSON and binary data representations. This particular serialization provider wraps [ABIEOS](https://github.com/eosnetworkfoundation/mandel-abieos), a C/C++ library that facilitates this conversion.
 * ECC, a component for working with public and private keys, cryptographic signatures, encryption/decryption, etc.
 * Softkey Signature Provider, an example pluggable signature provider for EosioSwift. It allows for signing transactions using in-memory K1 keys.

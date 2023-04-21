@@ -124,7 +124,7 @@ class EosioKeySignatureExtensionTests: XCTestCase {
 
     func test_Data_eosioSignature() {
         guard let data = try? Data(eosioSignature: signature0K1) else {
-            return XCTFail("Failed to convert EOSIO signature to Data()")
+            return XCTFail("Failed to convert EOS signature to Data()")
         }
         XCTAssertEqual(data.hex, signature0Hex)
     }

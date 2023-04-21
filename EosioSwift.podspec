@@ -9,9 +9,10 @@
 Pod::Spec.new do |s|
   s.name             = 'EosioSwift'
   s.version          = '1.0.0'
-  s.summary          = 'EOSIO SDK for Swift - API for integrating with EOSIO-based blockchains.'
-  s.homepage         = 'https://github.com/EOSIO/eosio-swift'
+  s.summary          = 'EOS SDK for Swift - API for integrating with EOS-based blockchains.'
+  s.homepage         = 'https://github.com/eosnetworkfoundation/mandel-swift'
   s.license          = { :type => 'MIT', :text => <<-LICENSE
+                           Copyright (c) 2021-2022 EOS Network Foundation (ENF) and its contributors.  All rights reserved.
                            Copyright (c) 2017-2020 block.one and its contributors.  All rights reserved.
                          LICENSE
                        }
@@ -24,7 +25,7 @@ Pod::Spec.new do |s|
                          'Steve McCoole' => 'steve.mccoole@objectpartners.com',
                          'Ben Martell' => 'ben.martell@objectpartners.com' }
 
-  s.source           = { :git => 'https://github.com/EOSIO/eosio-swift.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/eosnetworkfoundation/mandel-swift.git', :tag => s.version.to_s }
 
   s.swift_version         = '5.0'
   s.ios.deployment_target = '12.0'
